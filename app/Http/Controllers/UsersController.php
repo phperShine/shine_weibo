@@ -14,7 +14,7 @@ class UsersController extends Controller
 
 	public function __construct()
     {
-        $this->middleware('auth', [            
+        $this->middleware('auth', [
             'except' => ['show', 'create', 'store', 'index','confirmEmail']
         ]);
 
@@ -34,7 +34,7 @@ class UsersController extends Controller
     {
         return view('users.create');
     }
-   
+
 
    	public function show(User $user)
     {
@@ -112,7 +112,7 @@ class UsersController extends Controller
 
     protected function sendEmailConfirmationTo($user)
     {
-        $view = 'emails.confirm';
+      /*  $view = 'emails.confirm';
         $data = compact('user');
         $from = 'summer@example.com';
         $name = 'Summer';
@@ -121,7 +121,18 @@ class UsersController extends Controller
 
         Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
             $message->from($from, $name)->to($to)->subject($subject);
+        });*/
+
+
+        $view = 'emails.confirm';
+        $data = compact('user');
+        $to = $user->email;
+        $subject = "感谢注册 Weibo 应用！请确认你的邮箱。";
+
+        Mail::send($view, $data, function ($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
         });
+        
     }
 
 
