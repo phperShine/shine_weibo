@@ -40,6 +40,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
 
+
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
+
 /*Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/create', 'UsersController@create')->name('users.create');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
