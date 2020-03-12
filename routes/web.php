@@ -37,6 +37,9 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
+
+
 /*Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/create', 'UsersController@create')->name('users.create');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
