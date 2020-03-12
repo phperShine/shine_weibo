@@ -132,7 +132,7 @@ class UsersController extends Controller
         Mail::send($view, $data, function ($message) use ($to, $subject) {
             $message->to($to)->subject($subject);
         });
-        
+
     }
 
 
